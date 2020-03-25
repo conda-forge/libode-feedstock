@@ -16,7 +16,7 @@ source:
     - window-pointer-size            # [win]
     
 build:
-  number: 0
+  number: 1
   skip: true                         # [win and py==27]
   # add libode to the whitelist; it can apparently not be found yet when
   # pyode is built
