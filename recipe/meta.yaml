@@ -13,7 +13,6 @@ source:
   patches:
     - add-rt-to-dotpc                # [linux]
     - modify-dotpc-win               # [win]
-    - window-pointer-size            # [win]
 
 build:
   number: 1
