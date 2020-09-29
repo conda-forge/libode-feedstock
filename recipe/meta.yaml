@@ -11,8 +11,8 @@ source:
   url: https://bitbucket.org/odedevs/ode/downloads/ode-{{ version }}.tar.gz
   sha256: b26aebdcb015e2d89720ef48e0cb2e8a3ca77915f89d853893e7cc861f810f22
   patches:
-    - add-rt-to-dotpc                # [linux]
-    - modify-dotpc-win               # [win]
+    - add-rt-to-dotpc.patch          # [linux]
+    - modify-dotpc-win.patch         # [win]
 
 build:
   number: 1
