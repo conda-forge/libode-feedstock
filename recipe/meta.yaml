@@ -15,7 +15,7 @@ source:
     - modify-dotpc-win.patch         # [win]
 
 build:
-  number: 1
+  number: 2
   skip: true                         # [win and py==27]
   # add libode to the whitelist; it can apparently not be found yet when
   # pyode is built
