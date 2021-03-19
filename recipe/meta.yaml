@@ -15,7 +15,7 @@ source:
     - modify-dotpc-win.patch         # [win]
 
 build:
-  number: 3
+  number: 4
   skip: true                         # [win and py==27]
   # add libode to the whitelist; it can apparently not be found yet when
   # pyode is built
@@ -51,7 +51,8 @@ outputs:
         - libcxx                                                     # [osx]
         - vs2015_runtime                                             # [win]
     run_exports:
-      - libode
+      # No ABI docs or ABI Laboratory history, better be conservative
+      - {{ pin_subpackage(name, max_pin='x.x.x') }}
     files:
       - lib/libode*                                                  # [unix]
       - lib/pkgconfig/ode.pc                                         # [unix]
