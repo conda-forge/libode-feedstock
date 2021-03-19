@@ -61,7 +61,7 @@ outputs:
       - Library/lib/ode_double.lib                                   # [win]
       - Library/bin/ode_double.dll                                   # [win]
       - Library/lib/pkgconfig/ode.pc                                 # [win]
-      - Library/lib/cmake/ode*                                       # [win]
+      - Library/lib/cmake/ode-{{ soversion }}                        # [win]
       - include/ode
     test:
       commands:
@@ -70,9 +70,12 @@ outputs:
         - test -f $PREFIX/lib/libode.{{ soversion }}${SHLIB_EXT}     # [osx]
         - test -d $PREFIX/include/ode                                # [unix]
         - test -f $PREFIX/lib/pkgconfig/ode.pc                       # [unix]
+        - test -f $PREFIX/lib/cmake/ode-{{ soversion }}/ode-config.cmake  # [unix]
         - if not exist %PREFIX%\Library\lib\ode_double.lib exit 1    # [win]
         - if not exist %PREFIX%\Library\bin\ode_double.dll exit 1    # [win]
         - if not exist %PREFIX%\Library\lib\pkgconfig\ode.pc exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\lib\\cmake\\ode-{{ soversion }}\\ode-config.cmake  # [win]
+
   - name: pyode
     requirements:
       run:
