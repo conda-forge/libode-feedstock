@@ -15,7 +15,7 @@ source:
     - modify-dotpc-win.patch         # [win]
 
 build:
-  number: 3
+  number: 4
   skip: true                         # [win and py==27]
   # add libode to the whitelist; it can apparently not be found yet when
   # pyode is built
@@ -51,7 +51,8 @@ outputs:
         - libcxx                                                     # [osx]
         - vs2015_runtime                                             # [win]
     run_exports:
-      - libode
+      # No ABI docs or ABI Laboratory history, better be conservative
+      - {{ pin_subpackage(name, max_pin='x.x.x') }}
     files:
       - lib/libode*                                                  # [unix]
       - lib/pkgconfig/ode.pc                                         # [unix]
@@ -60,7 +61,7 @@ outputs:
       - Library/lib/ode_double.lib                                   # [win]
       - Library/bin/ode_double.dll                                   # [win]
       - Library/lib/pkgconfig/ode.pc                                 # [win]
-      - Library/lib/cmake/ode*                                       # [win]
+      - Library/lib/cmake/ode-{{ soversion }}                        # [win]
       - include/ode
     test:
       commands:
@@ -69,9 +70,12 @@ outputs:
         - test -f $PREFIX/lib/libode.{{ soversion }}${SHLIB_EXT}     # [osx]
         - test -d $PREFIX/include/ode                                # [unix]
         - test -f $PREFIX/lib/pkgconfig/ode.pc                       # [unix]
+        - test -f $PREFIX/lib/cmake/ode-{{ soversion }}/ode-config.cmake  # [unix]
         - if not exist %PREFIX%\Library\lib\ode_double.lib exit 1    # [win]
         - if not exist %PREFIX%\Library\bin\ode_double.dll exit 1    # [win]
         - if not exist %PREFIX%\Library\lib\pkgconfig\ode.pc exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\lib\\cmake\\ode-{{ soversion }}\\ode-config.cmake  # [win]
+
   - name: pyode
     requirements:
       run:
