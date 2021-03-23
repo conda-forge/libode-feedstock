@@ -96,7 +96,7 @@ outputs:
 
 about:
   home: https://www.ode.org/
-  license: LGPL-2.0 or BSD-4-Clause
+  license: LGPL-2.1-or-later OR BSD-4-Clause
   summary: Open Dynamics Engine, dynamics simulation
   license_file:
     - LICENSE.TXT
@@ -105,3 +105,4 @@ about:
 extra:
   recipe-maintainers:
     - repagh
+    - traversaro

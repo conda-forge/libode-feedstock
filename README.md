@@ -177,4 +177,5 @@ Feedstock Maintainers
 =====================
 
 * [@repagh](https://github.com/repagh/)
+* [@traversaro](https://github.com/traversaro/)
 
