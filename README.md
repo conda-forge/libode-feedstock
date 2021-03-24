@@ -3,7 +3,7 @@ About libode
 
 Home: https://www.ode.org/
 
-Package license: LGPL-2.0 or BSD-4-Clause
+Package license: LGPL-2.1-or-later OR BSD-4-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libode-feedstock/blob/master/LICENSE.txt)
 
