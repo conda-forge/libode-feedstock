@@ -71,14 +71,14 @@ outputs:
         - test -f $PREFIX/lib/libode${SHLIB_EXT}                     # [unix]
         - test -f $PREFIX/lib/libode${SHLIB_EXT}.{{ soversion }}     # [linux]
         - test -f $PREFIX/lib/libode.{{ soversion }}${SHLIB_EXT}     # [osx]
-        - test -d $PREFIX/include/ode/ode.h                          # [unix]
+        - test -f $PREFIX/include/ode/ode.h                          # [unix]
         - test -f $PREFIX/lib/pkgconfig/ode.pc                       # [unix]
         - test -f $PREFIX/lib/cmake/ode-{{ soversion }}/ode-config.cmake  # [unix]
         - if not exist %PREFIX%\Library\lib\ode_double.lib exit 1    # [win]
         - if not exist %PREFIX%\Library\bin\ode_double.dll exit 1    # [win]
         - if not exist %PREFIX%\Library\lib\pkgconfig\ode.pc exit 1  # [win]
-        - if not exist %PREFIX%\\Library\\lib\\cmake\\ode-{{ soversion }}\\ode-config.cmake  # [win]
-        - if not exist %PREFIX%\\Library\\include\\ode\\ode.h        # [win]
+        - if not exist %PREFIX%\\Library\\lib\\cmake\\ode-{{ soversion }}\\ode-config.cmake exit 1 # [win]
+        - if not exist %PREFIX%\\Library\\include\\ode\\ode.h exit 1 # [win]
 
   - name: pyode
     requirements:
