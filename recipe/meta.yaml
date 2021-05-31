@@ -16,8 +16,7 @@ source:
     - macos-do-not-use-deprecated.patch
 
 build:
-  number: 5
-  skip: true                         # [win and py==27]
+  number: 6
   # add libode to the whitelist; it can apparently not be found yet when
   # pyode is built
   missing_dso_whitelist:
@@ -43,7 +42,7 @@ requirements:
     - m2-patch                       # [win]
     - make                           # [unix]
   host:
-    - python {{ PY_VER }}*
+    - python
     - cython
 
 outputs:
@@ -93,7 +92,7 @@ outputs:
         - libstdcxx-ng                                               # [linux]
         - libgcc-ng                                                  # [linux]
         - libcxx                                                     # [osx]
-        - python {{ PY_VER }}*
+        - python
     files:
       - lib/python{{ PY_VER }}/site-packages/ode.*                   # [unix]
       - lib/python{{ PY_VER }}/site-packages/Open_Dynamics_Engine*egg-info  # [unix]
