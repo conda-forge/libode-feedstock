@@ -16,7 +16,11 @@ source:
     - macos-do-not-use-deprecated.patch
 
 build:
-  number: 6
+  number: 7
+  run_exports:
+    # No ABI docs or ABI Laboratory history, better be conservative
+    - {{ pin_subpackage(name, max_pin='x.x.x') }}
+
   # add libode to the whitelist; it can apparently not be found yet when
   # pyode is built
   missing_dso_whitelist:
@@ -47,6 +51,10 @@ requirements:
 
 outputs:
   - name: {{ name }}
+    build:
+      run_exports:
+        # No ABI docs or ABI Laboratory history, better be conservative
+        - {{ pin_subpackage(name, max_pin='x.x.x') }}
     requirements:
       run:
         - pthread-stubs                                              # [unix]
@@ -54,9 +62,6 @@ outputs:
         - libgcc-ng                                                  # [linux]
         - libcxx                                                     # [osx]
         - vs2015_runtime                                             # [win]
-    run_exports:
-      # No ABI docs or ABI Laboratory history, better be conservative
-      - {{ pin_subpackage(name, max_pin='x.x.x') }}
     files:
       - lib/libode*                                                  # [unix]
       - lib/pkgconfig/ode.pc                                         # [unix]
@@ -85,6 +90,10 @@ outputs:
         - if not exist %PREFIX%\\Library\\include\\ode\\ode.h exit 1  # [win]
 
   - name: pyode
+    build:
+      run_exports:
+        # No ABI docs or ABI Laboratory history, better be conservative
+        - {{ pin_subpackage(name, max_pin='x.x.x') }}
     requirements:
       run:
         - libode
