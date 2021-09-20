@@ -46,7 +46,7 @@ requirements:
     - m2-patch                       # [win]
     - make                           # [unix]
   host:
-    - python {{ python }}
+    - python
     - cython
 
 outputs:
@@ -55,8 +55,6 @@ outputs:
       run_exports:
         # No ABI docs or ABI Laboratory history, better be conservative
         - {{ pin_subpackage(name, max_pin='x.x.x') }}
-      ignore_run_exports_from:
-        - python
     requirements:
       run:
         - pthread-stubs                                              # [unix]
@@ -75,8 +73,7 @@ outputs:
       - Library/lib/pkgconfig/ode.pc                                 # [win]
       - Library/lib/cmake/ode-{{ soversion }}                        # [win]
       - Library/include/ode                                          # [win]
- 
-     
+
     test:
       commands:
         - test -f $PREFIX/lib/libode${SHLIB_EXT}                     # [unix]
@@ -96,7 +93,6 @@ outputs:
       run_exports:
         # No ABI docs or ABI Laboratory history, better be conservative
         - {{ pin_subpackage(name, max_pin='x.x.x') }}
-        - {{ pin_compatible('python', max_pin='x.x') }}
     requirements:
       run:
         - libode
