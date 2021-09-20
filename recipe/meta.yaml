@@ -96,6 +96,7 @@ outputs:
       run_exports:
         # No ABI docs or ABI Laboratory history, better be conservative
         - {{ pin_subpackage(name, max_pin='x.x.x') }}
+        - {{ pin_subpackage('python', max_pin='x.x') }}
     requirements:
       run:
         - libode
