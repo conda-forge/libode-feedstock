@@ -46,7 +46,7 @@ requirements:
     - m2-patch                       # [win]
     - make                           # [unix]
   host:
-    - python
+    - python {{ python }}
     - cython
 
 outputs:
