@@ -100,11 +100,6 @@ outputs:
     requirements:
       run:
         - libode
-        - pthread-stubs                                              # [unix]
-        - libstdcxx-ng                                               # [linux]
-        - libgcc-ng                                                  # [linux]
-        - libcxx                                                     # [osx]
-        - python
     files:
       - lib/python{{ PY_VER }}/site-packages/ode.*                   # [unix]
       - lib/python{{ PY_VER }}/site-packages/Open_Dynamics_Engine*egg-info  # [unix]
