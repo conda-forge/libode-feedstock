@@ -13,6 +13,7 @@ source:
   patches:
     - add-rt-to-dotpc.patch          # [linux]
     - modify-dotpc-win.patch         # [win]
+    - fix-pkg-config-setup-py.patch  # [win]
     - macos-do-not-use-deprecated.patch
 
 build:
