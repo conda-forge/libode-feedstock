@@ -16,7 +16,7 @@ source:
     - macos-do-not-use-deprecated.patch
 
 build:
-  number: 7
+  number: 8
   run_exports:
     # No ABI docs or ABI Laboratory history, better be conservative
     - {{ pin_subpackage(name, max_pin='x.x.x') }}
