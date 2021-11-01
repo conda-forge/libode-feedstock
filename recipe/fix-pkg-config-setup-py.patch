@@ -1,0 +1,26 @@
+From 99f0612ab715fa035e7593b5bb407d080ab2eb4d Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Mon, 1 Nov 2021 14:47:11 +0100
+Subject: [PATCH] Add --msvc-syntax to setup.py
+
+---
+ bindings/python/setup.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/bindings/python/setup.py b/bindings/python/setup.py
+index f0c5763a..3adc1158 100644
+--- a/bindings/python/setup.py
++++ b/bindings/python/setup.py
+@@ -11,10 +11,10 @@
+ 
+ try:
+     ode_cflags = Popen(
+-        ["pkg-config", "--cflags", "ode"],
++        ["pkg-config", "--cflags", "--msvc-syntax", "ode"],
+         stdout=PIPE).stdout.read().decode('ascii').split()
+     ode_libs = Popen(
+-        ["pkg-config", "--libs", "ode"],
++        ["pkg-config", "--libs", "--msvc-syntax", "ode"],
+         stdout=PIPE).stdout.read().decode('ascii').split()
+ except (OSError, CalledProcessError):
+     raise SystemExit("Failed to find ODE with 'pkg-config'. Please make sure "
