@@ -50,6 +50,7 @@ requirements:
   host:
     - python
     - cython 0.29
+    - setuptools
 
 outputs:
   - name: {{ name }}
