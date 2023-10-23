@@ -33,6 +33,7 @@ pkg-config --libs ode
 ECHO "PKG_CONFIG_PATH %PKG_CONFIG_PATH%"
 set PATH=%PATH%:%LIBRARY_PREFIX%\bin
 
-python setup.py install --verbose
+python -m pip install . -vv
+REM python setup.py install --verbose
 if errorlevel 1 exit 1
 REM --root %PREFIX% --prefix ""
