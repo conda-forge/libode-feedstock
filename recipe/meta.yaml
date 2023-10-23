@@ -49,6 +49,7 @@ requirements:
     - make                           # [unix]
   host:
     - python
+    - pip
     - cython 0.29
     - setuptools
 
