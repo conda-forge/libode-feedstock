@@ -5,6 +5,8 @@ mkdir _build
 cd _build
 
 cmake ${CMAKE_ARGS} -DCMAKE_BUILD_TYPE=Release \
+      -DODE_WITH_LIBCCD:BOOL=ON \
+      -DODE_WITH_LIBCCD_SYSTEM:BOOL=ON \
       -DODE_WITH_DEMOS:BOOL=OFF \
       -DODE_WITH_TESTS:BOOL=OFF .. \
       -DCMAKE_INSTALL_PREFIX:PATH="" \

@@ -8,6 +8,8 @@ REM add future installation path to pkgconfig
 set PKG_CONFIG_PATH=%LIBRARY_PREFIX%\lib\pkgconfig;
 
 cmake -G"NMake Makefiles" ^
+      -DODE_WITH_LIBCCD:BOOL=ON ^
+      -DODE_WITH_LIBCCD_SYSTEM:BOOL=ON ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DODE_WITH_DEMOS:BOOL=OFF ^
       -DODE_WITH_TESTS:BOOL=OFF ^
