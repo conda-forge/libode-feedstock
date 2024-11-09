@@ -19,7 +19,7 @@ source:
     - fix_system_ccd_cmake.patch
 
 build:
-  number: 14
+  number: 15
   run_exports:
     # No ABI docs or ABI Laboratory history, better be conservative
     - {{ pin_subpackage(name, max_pin='x.x.x') }}
@@ -45,6 +45,7 @@ requirements:
     - {{ compiler('cxx') }}          # stage 1, library
     - cmake
     - {{ compiler('c') }}            # stage 2, generate bindings
+    - {{ stdlib('c') }}
     - pkg-config
     - m2-patch                       # [win]
     - make                           # [unix]
@@ -64,10 +65,6 @@ outputs:
     requirements:
       run:
         - pthread-stubs                                              # [unix]
-        - libstdcxx-ng                                               # [linux]
-        - libgcc-ng                                                  # [linux]
-        - libcxx                                                     # [osx]
-        - vs2015_runtime                                             # [win]
     files:
       - lib/libode*                                                  # [unix]
       - lib/pkgconfig/ode.pc                                         # [unix]
@@ -98,6 +95,8 @@ outputs:
         - cmake-package-check
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
+
 
   - name: pyode
     build:
