@@ -53,7 +53,7 @@ requirements:
     - libccd-double
     - python
     - pip
-    - cython 0.29
+    - cython
     - setuptools
 
 outputs:
