@@ -1,7 +1,7 @@
 # defining package and version
 {% set name = "libode" %}
-{% set version = "0.16.2" %}
-{% set soversion = "0.16.2" %}
+{% set version = "0.16.5" %}
+{% set soversion = "0.16.5" %}
 
 package:
   name: {{ name|lower }}
@@ -9,17 +9,17 @@ package:
 
 source:
   url: https://bitbucket.org/odedevs/ode/downloads/ode-{{ version }}.tar.gz
-  sha256: b26aebdcb015e2d89720ef48e0cb2e8a3ca77915f89d853893e7cc861f810f22
+  sha256: ba875edd164570958795eeaa70f14853bfc34cc9871f8adde8da47e12bd54679
   patches:
     - add-rt-to-dotpc.patch          # [linux]
     - modify-dotpc-win.patch         # [win]
     - fix-pkg-config-setup-py.patch  # [win]
-    - macos-do-not-use-deprecated.patch
     - distutils-to-setuptools.patch
     - fix_system_ccd_cmake.patch
+    - fix-cython-3.patch
 
 build:
-  number: 14
+  number: 0
   run_exports:
     # No ABI docs or ABI Laboratory history, better be conservative
     - {{ pin_subpackage(name, max_pin='x.x.x') }}
@@ -40,11 +40,12 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython 0.29                            # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
     - gnuconfig  # [unix]
     - {{ compiler('cxx') }}          # stage 1, library
     - cmake
     - {{ compiler('c') }}            # stage 2, generate bindings
+    - {{ stdlib('c') }}
     - pkg-config
     - m2-patch                       # [win]
     - make                           # [unix]
@@ -52,7 +53,7 @@ requirements:
     - libccd-double
     - python
     - pip
-    - cython 0.29
+    - cython
     - setuptools
 
 outputs:
@@ -64,10 +65,6 @@ outputs:
     requirements:
       run:
         - pthread-stubs                                              # [unix]
-        - libstdcxx-ng                                               # [linux]
-        - libgcc-ng                                                  # [linux]
-        - libcxx                                                     # [osx]
-        - vs2015_runtime                                             # [win]
     files:
       - lib/libode*                                                  # [unix]
       - lib/pkgconfig/ode.pc                                         # [unix]
@@ -98,6 +95,8 @@ outputs:
         - cmake-package-check
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
+
 
   - name: pyode
     build:
