@@ -1,0 +1,26 @@
+diff --git a/bindings/python/ode.pxd b/bindings/python/ode.pxd
+index 10295c0e..d0611823 100644
+--- a/bindings/python/ode.pxd
++++ b/bindings/python/ode.pxd
+@@ -25,7 +25,7 @@ cdef extern from "stdlib.h":
+     void free(void*)
+ 
+ cdef extern from "stdio.h":
+-    int printf(char*)
++    int printf(const char*)
+ 
+ # Include the basic floating point type -> dReal  (either float or double)
+ #include "_precision.pyx"
+diff --git a/bindings/python/ode.pyx b/bindings/python/ode.pyx
+index 69fbd7da..20c08e8f 100644
+--- a/bindings/python/ode.pyx
++++ b/bindings/python/ode.pyx
+@@ -3566,7 +3566,7 @@ cdef class SpaceBase(GeomObject):
+ # The function calls a Python callback function with 3 arguments:
+ # def callback(UserArg, Geom1, Geom2)
+ # Geom1 and Geom2 are instances of GeomXyz classes.
+-cdef void collide_callback(void* data, dGeomID o1, dGeomID o2):
++cdef void collide_callback(void* data, dGeomID o1, dGeomID o2) noexcept:
+     cdef object tup
+ #    cdef Space space
+     cdef size_t id1, id2

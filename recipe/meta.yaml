@@ -16,6 +16,7 @@ source:
     - fix-pkg-config-setup-py.patch  # [win]
     - distutils-to-setuptools.patch
     - fix_system_ccd_cmake.patch
+    - fix-cython-3.patch
 
 build:
   number: 0
