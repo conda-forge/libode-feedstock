@@ -1,7 +1,7 @@
 # defining package and version
 {% set name = "libode" %}
-{% set version = "0.16.2" %}
-{% set soversion = "0.16.2" %}
+{% set version = "0.16.5" %}
+{% set soversion = "0.16.5" %}
 
 package:
   name: {{ name|lower }}
@@ -19,7 +19,7 @@ source:
     - fix_system_ccd_cmake.patch
 
 build:
-  number: 15
+  number: 0
   run_exports:
     # No ABI docs or ABI Laboratory history, better be conservative
     - {{ pin_subpackage(name, max_pin='x.x.x') }}
