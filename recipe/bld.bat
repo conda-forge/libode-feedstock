@@ -21,6 +21,7 @@ cmake -G"NMake Makefiles" ^
       -DODE_WITH_TESTS:BOOL=OFF ^
       -DCMAKE_INSTALL_PREFIX:PATH=%LIBRARY_PREFIX% ^
       -DCMAKE_PREFIX_PATH:PATH=%LIBRARY_PREFIX% ^
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ^
       ..
 if errorlevel 1 exit 1
 
