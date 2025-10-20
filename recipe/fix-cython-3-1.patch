@@ -1,0 +1,36 @@
+From e704b78af1f1a15a0589d503fc45e0f5f0de21fe Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Mon, 20 Oct 2025 09:57:34 +0200
+Subject: [PATCH] Fix cython 3.1
+
+---
+ bindings/python/ode.pyx | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/bindings/python/ode.pyx b/bindings/python/ode.pyx
+index 69fbd7da..bc800c9c 100644
+--- a/bindings/python/ode.pyx
++++ b/bindings/python/ode.pyx
+@@ -3340,7 +3340,7 @@ cdef class GeomObject:
+         @param bits: Collide bit field
+         @type bits: int/long
+         """
+-        dGeomSetCollideBits(self.gid, long(bits))
++        dGeomSetCollideBits(self.gid, bits)
+         
+     def setCategoryBits(self, bits):
+         """setCategoryBits(bits)
+@@ -3350,7 +3350,7 @@ cdef class GeomObject:
+         @param bits: Category bit field
+         @type bits: int/long
+         """
+-        dGeomSetCategoryBits(self.gid, long(bits))
++        dGeomSetCategoryBits(self.gid, bits)
+ 
+     def getCollideBits(self):
+         """getCollideBits() -> long
+@@ -4506,3 +4506,4 @@ def InitODE():
+ #environment = Body(None)
+ environment = None
+ InitODE()
++
