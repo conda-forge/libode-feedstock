@@ -19,7 +19,7 @@ cmake ${CMAKE_ARGS} -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_LIBDIR="lib"
 
 make VERBOSE=1
-make install DESTDIR="${PREFIX}"
+make install
 cd ..
 
 # stage 2, bindings
