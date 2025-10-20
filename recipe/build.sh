@@ -15,11 +15,11 @@ cmake ${CMAKE_ARGS} -DCMAKE_BUILD_TYPE=Release \
       -DODE_WITH_LIBCCD_BOX_CYL:BOOL=OFF \
       -DODE_WITH_DEMOS:BOOL=OFF \
       -DODE_WITH_TESTS:BOOL=OFF .. \
-      -DCMAKE_INSTALL_PREFIX:PATH="" \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       -DCMAKE_INSTALL_LIBDIR="lib"
 
 make VERBOSE=1
-make install DESTDIR="${PREFIX}"
+make install
 cd ..
 
 # stage 2, bindings

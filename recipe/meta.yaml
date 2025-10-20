@@ -1,7 +1,7 @@
 # defining package and version
 {% set name = "libode" %}
-{% set version = "0.16.5" %}
-{% set soversion = "0.16.5" %}
+{% set version = "0.16.6" %}
+{% set soversion = "0.16.6" %}
 
 package:
   name: {{ name|lower }}
@@ -9,14 +9,14 @@ package:
 
 source:
   url: https://bitbucket.org/odedevs/ode/downloads/ode-{{ version }}.tar.gz
-  sha256: ba875edd164570958795eeaa70f14853bfc34cc9871f8adde8da47e12bd54679
+  sha256: c91a28c6ff2650284784a79c726a380d6afec87ecf7a35c32a6be0c5b74513e8
   patches:
     - add-rt-to-dotpc.patch          # [linux]
     - modify-dotpc-win.patch         # [win]
     - fix-pkg-config-setup-py.patch  # [win]
     - distutils-to-setuptools.patch
-    - fix_system_ccd_cmake.patch
     - fix-cython-3.patch
+    - fix-cython-3-1.patch
 
 build:
   number: 0
@@ -96,7 +96,6 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
-
 
   - name: pyode
     build:
