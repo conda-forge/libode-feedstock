@@ -96,7 +96,6 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
 
-
   - name: pyode
     build:
       run_exports:
