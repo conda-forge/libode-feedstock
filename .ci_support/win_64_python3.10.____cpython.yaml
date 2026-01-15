@@ -9,7 +9,7 @@ channel_targets:
 cxx_compiler:
 - vs2022
 libode:
-- 0.16.5
+- 0.16.6
 pin_run_as_build:
   python:
     min_pin: x.x
